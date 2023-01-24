@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MatiasProject.Models.Domain;
+using MatiasProject.Repositories.Abstract;
+using MatiasProject.Repositories.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("connstr")));
+
+//Dodanie us³ugi
+builder.Services.AddScoped<IGatunekService, GatunekService>();
 
 var app = builder.Build();
 
