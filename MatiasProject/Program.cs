@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using MatiasProject.Models.Domain;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<DatabaseContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("connstr")));
 
 var app = builder.Build();
 
