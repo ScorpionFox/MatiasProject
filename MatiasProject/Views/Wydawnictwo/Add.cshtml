@@ -1,0 +1,29 @@
+﻿@model MatiasProject.Models.Domain.Wydawnictwo
+@{
+}
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Dodaj Wydawnictwo</h1>
+            <form asp-action="Add" method="post">
+                <div class="form-group">
+                    <label asp-for="NameWydawnictwo">Publisher Name (Nazwa Wydawnictwa) *</label>
+                    <input type="text" class="form-control" asp-for="NameWydawnictwo" />
+                    <span asp-validation-for="NameWydawnictwo" class="text-danger"></span>
+                </div>
+                @if (TempData["msg"] != null)
+                {
+                    <div class="form-group">
+                        @TempData["msg"]
+                    </div>
+                }
+                <div class="form-group pt-3">
+                    <button type="submit" class="btn btn-dark">Zapisz</button>
+                    <a href="/Wydawnictwo/GetAll" class="btn btn-primary">Lista wydawnictw</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
