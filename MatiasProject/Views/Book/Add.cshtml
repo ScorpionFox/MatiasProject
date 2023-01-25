@@ -1,0 +1,66 @@
+﻿@model MatiasProject.Models.Domain.Book
+@{
+}
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Dodaj Książkę</h1>
+            <form asp-action="Add" method="post">
+                <div class="form-group">
+                    <label asp-for="Title">Title (Tytuł) *</label>
+                    <input type="text" class="form-control" asp-for="Title" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="GatunekId">Genre (Gatunek) *</label>
+                    <select asp-for="GatunekId" asp-items="Model.GatunekLista" class="form-control">
+                        <option value="">--Wybierz--</option>
+                    </select>
+                    <span asp-validation-for="GatunekId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Isbn">Isbn *</label>
+                    <input type="text" class="form-control" asp-for="Isbn" />
+                    <span asp-validation-for="Isbn" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="TotalPages">Total Pages (Liczba stron) *</label>
+                    <input type="number" class="form-control" asp-for="TotalPages" />
+                    <span asp-validation-for="TotalPages" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="AutorId">Author (Autor) *</label>
+                    <select asp-for="AutorId" asp-items="Model.AutorLista" class="form-control">
+                        <option value="Author">--Wybierz--</option>
+                    </select>
+                    <span asp-validation-for="AutorId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="WydawnictwoId">Publisher (Wydawnictwo) *</label>
+                    <select asp-for="WydawnictwoId" asp-items="Model.WydawnictwoLista" class="form-control">
+                        <option value="Publisher">--Wybierz--</option>
+                    </select>
+                    <span asp-validation-for="WydawnictwoId" class="text-danger"></span>
+                </div>
+
+                @if (TempData["msg"] != null)
+                {
+                    <div class="form-group">
+                        @TempData["msg"]
+                    </div>
+                }
+                <div class="form-group pt-3">
+                    <button type="submit" class="btn btn-dark"><i class="bi bi-save"></i> Zapisz</button>
+                    <a href="/Book/GetAll" class="btn btn-primary"><i class="bi bi-list"></i> Lista książek</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

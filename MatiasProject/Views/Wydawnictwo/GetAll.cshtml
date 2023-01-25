@@ -5,7 +5,7 @@
 <div class="container pt-5">
     <div class="row">
         <div class="col-md-6">
-            <a class="btn btn-dark" href="/Wydawnictwo/Add">Dodaj kolejne</a>
+            <a class="btn btn-dark" href="/Wydawnictwo/Add">+ Dodaj kolejne wydawnictwo</a>
         </div>
     </div>
     <div class="row">
@@ -25,8 +25,8 @@
                         <tr>
                             <td>@item.NameWydawnictwo</td>
                             <td>
-                                <a href="/Wydawnictwo/Update?id=@item.Id" class="btn btn-success">Edytuj</a>
-                                <a href="/Wydawnictwo/Delete?id=@item.Id" class="btn btn-danger" onclick="return window.confirm('Czy chcesz usunąć ten rekord?')">Usuń</a>
+                                <a href="/Wydawnictwo/Update?id=@item.Id" class="btn btn-success"><i class="bi bi-pen"></i> Edytuj</a>
+                                <a href="/Wydawnictwo/Delete?id=@item.Id" class="btn btn-danger" onclick="return window.confirm('Czy chcesz usunąć ten rekord?')"><i class="bi bi-trash"></i> Usuń</a>
                             </td>
                         </tr>
                     }

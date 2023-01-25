@@ -24,17 +24,17 @@ namespace MatiasProject.Models.Domain
 
         //Niemapowane w bazie danych
         [NotMapped]
-        public string NameAutor { get; set; }
+        public string? NameAutor { get; set; }
         [NotMapped]
-        public string NameWydawnictwo { get; set; }
+        public string? NameWydawnictwo { get; set; }
         [NotMapped]
-        public string GatunekName { get; set; }
+        public string? GatunekName { get; set; }
         [NotMapped]
-        public List<SelectListItem> AutorLista { get; set; }
+        public List<SelectListItem>? AutorLista { get; set; }
         [NotMapped]
-        public List<SelectListItem> BookLista { get; set; }
+        public List<SelectListItem>? WydawnictwoLista { get; set; }
         [NotMapped]
-        public List<SelectListItem> GatunekLista { get; set; }
+        public List<SelectListItem>? GatunekLista { get; set; }
 
     }
 }
