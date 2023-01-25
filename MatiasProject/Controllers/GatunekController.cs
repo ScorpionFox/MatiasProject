@@ -28,7 +28,7 @@ namespace MatiasProject.Controllers
             var result = service.Add(model);
             if (result == true)
             {
-                TempData["mgs"] = "Dodano Pomyślnie";
+                TempData["msg"] = "Dodano Pomyślnie";
                 return RedirectToAction(nameof(Add));
             }
             else
@@ -53,9 +53,8 @@ namespace MatiasProject.Controllers
             }
             var result = service.Update(model);
             if (result == true)
-            {
-                TempData["mgs"] = "Zmieniono Pomyślnie";
-                return RedirectToAction(nameof(Add));
+            {              
+                return RedirectToAction("GetAll");
             }
             else
             {
@@ -67,7 +66,7 @@ namespace MatiasProject.Controllers
         public IActionResult Delete(int id)
         {
             var result = service.Delete(id);
-            return RedirectToAction("Get All");
+            return RedirectToAction("GetAll");
         }
 
         public IActionResult GetAll()
