@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MatiasProject.Models.Domain
 {
@@ -18,6 +21,20 @@ namespace MatiasProject.Models.Domain
         public int WydawnictwoId { get; set; }
         [Required]
         public int GatunekId { get; set; }
+
+        //Niemapowane w bazie danych
+        [NotMapped]
+        public string NameAutor { get; set; }
+        [NotMapped]
+        public string NameWydawnictwo { get; set; }
+        [NotMapped]
+        public string GatunekName { get; set; }
+        [NotMapped]
+        public List<SelectListItem> AutorLista { get; set; }
+        [NotMapped]
+        public List<SelectListItem> BookLista { get; set; }
+        [NotMapped]
+        public List<SelectListItem> GatunekLista { get; set; }
 
     }
 }

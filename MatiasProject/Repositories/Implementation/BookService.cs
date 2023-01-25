@@ -55,7 +55,28 @@ namespace MatiasProject.Repositories.Implementation
 
         public IEnumerable<Book> GetAll()
         {
-            return context.Book.ToList();
+
+            var data = (from book in context.Book
+                        join autor in context.Autor
+                        on book.AutorId equals autor.Id
+                        join wydawnictwo in context.Wydawnictwo
+                        on book.WydawnictwoId equals wydawnictwo.Id
+                        join gatunek in context.Gatunek on book.GatunekId equals gatunek.Id
+                        select new Book
+                        {
+                            Id = book.Id,
+                            AutorId = book.AutorId,
+                            WydawnictwoId = book.WydawnictwoId,
+                            GatunekId = book.GatunekId,
+                            Isbn = book.Isbn,
+                            Title = book.Title,
+                            TotalPages = book.TotalPages,
+                            GatunekName = gatunek.Name,
+                            NameAutor = autor.NameAutor,
+                            NameWydawnictwo = wydawnictwo.NameWydawnictwo
+                        }
+                        ).ToList();
+            return data;
         }
 
         public bool Update(Book model)
