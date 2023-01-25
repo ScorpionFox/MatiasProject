@@ -5,29 +5,72 @@ namespace MatiasProject.Repositories.Implementation
 {
     public class AutorService : IAutorService
     {
-        public bool Add(Autor model)
+        private readonly DatabaseContext context;
+
+        public AutorService(DatabaseContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
         }
 
-        public bool Delete(int model)
+        public bool Add(Autor model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                context.Autor.Add(model);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            try
+            {
+                var data = this.FindById(id);
+                if (data == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    context.Autor.Remove(data);
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public Autor FindById(int id)
         {
-            throw new NotImplementedException();
+            return context.Autor.Find(id);
         }
 
         public IEnumerable<Autor> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Autor.ToList();
         }
 
         public bool Update(Autor model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                context.Autor.Update(model);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
+
