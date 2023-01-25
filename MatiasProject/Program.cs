@@ -15,7 +15,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 builder.Services.AddScoped<IGatunekService, GatunekService>();
 builder.Services.AddScoped<IAutorService, AutorService>();
 builder.Services.AddScoped<IWydawnictwoService, WydawnictwoService>();
-
+builder.Services.AddScoped<IBookService, BookService>();
 
 var app = builder.Build();
 
