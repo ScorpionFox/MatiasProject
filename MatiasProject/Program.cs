@@ -20,6 +20,7 @@ builder.Services.AddScoped<IAutorService, AutorService>();
 builder.Services.AddScoped<IWydawnictwoService, WydawnictwoService>();
 builder.Services.AddScoped<IBookService, BookService>();
 //Dla autoryzacji
+builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();    
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<DatabaseContext>()
     .AddDefaultTokenProviders();
