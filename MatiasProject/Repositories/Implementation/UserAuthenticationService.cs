@@ -26,45 +26,45 @@ namespace MatiasProject.Repositories.Implementation
             if (user == null)
             {
                 status.StatusCode = 0;
-                status.Message = "Niepoprawna nazwa użytkownika";
+                status.Message = "Invalid username";
                 return status;
             }
 
             if (!await userManager.CheckPasswordAsync(user, model.Password))
             {
                 status.StatusCode = 0;
-                status.Message = "Niepoprawne hasło";
+                status.Message = "Invalid Password";
                 return status;
             }
 
-            var signInResult = await signInManager.PasswordSignInAsync(user,model.Password,false, true);
-            if (!signInResult.Succeeded) 
+            var signInResult = await signInManager.PasswordSignInAsync(user, model.Password, false, true);
+            if (signInResult.Succeeded)
             {
-                //dodanie roli
                 var userRoles = await userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name,user.UserName)
+                    new Claim(ClaimTypes.Surname, user.UserName),
                 };
+
                 foreach (var userRole in userRoles)
                 {
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
                 status.StatusCode = 1;
-                status.Message = "Zalogowano pomyślnie";
-                return status;
-            }else if(signInResult.IsLockedOut)
+                status.Message = "Logged in successfully";
+            }
+            else if (signInResult.IsLockedOut)
             {
-                status.StatusCode=0;
-                status.Message = "Użytkownik zablokowany";
-                return status;
+                status.StatusCode = 0;
+                status.Message = "User is locked out";
             }
             else
             {
                 status.StatusCode = 0;
-                status.Message = "Błąd przy próbie logowania";
-                return status;
-            }    
+                status.Message = "Error on logging in";
+            }
+
+            return status;
         }
 
         public async Task LogoutAsync()

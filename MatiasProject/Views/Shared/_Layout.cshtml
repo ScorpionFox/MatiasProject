@@ -30,6 +30,15 @@
                     <li class="nav-item">
                         <a href="/Book/GetAll" class="nav-link">Książki</a>
                     </li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li><a href="/Admin/Display">Admin Page</a></li>
+                    }
+                    @if (!string.IsNullOrEmpty(User.Identity.Name))
+                    {
+                        <li><a href="/UserAuthentication/ChangePassword">ChangePassword</a></li>
+                        <li><a href="/UserAuthentication/Logout">Logout</a></li>
+                    }
                 </ul>
             </div>
         </div>
