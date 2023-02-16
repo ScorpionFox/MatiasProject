@@ -24,10 +24,13 @@
                     {
                         <tr>
                             <td>@item.NameAutor</td>
-                            <td>
-                                <a href="/Autor/Update?id=@item.Id" class="btn btn-success"><i class="bi bi-pen"></i> Edytuj</a>
-                                <a href="/Autor/Delete?id=@item.Id" class="btn btn-danger" onclick="return window.confirm('Czy chcesz usunąć ten rekord?')"><i class="bi bi-trash"></i> Usuń</a>
-                            </td>
+                             @if (User.IsInRole("admin"))
+                            {
+                                <td>
+                                    <a href="/Autor/Update?id=@item.Id" class="btn btn-success"><i class="bi bi-pen"></i> Edytuj</a>
+                                    <a href="/Autor/Delete?id=@item.Id" class="btn btn-danger" onclick="return window.confirm('Czy chcesz usunąć ten rekord?')"><i class="bi bi-trash"></i> Usuń</a>
+                                </td>
+                            }
                         </tr>
                     }
                 </tbody>

@@ -18,22 +18,24 @@
             <a class="navbar-brand" href="/Dashboard/Display">MatiasProject</a>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="/Gatunek/GetAll" class="nav-link">Gatunki</a>
-                    </li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li class="nav-item">
+                            <a href="/Gatunek/GetAll" class="nav-link">Gatunki</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a href="/Autor/GetAll" class="nav-link">Autorzy</a>
                     </li>
-                    <li class="nav-item active">
-                        <a href="/Wydawnictwo/GetAll" class="nav-link">Wydawnictwa</a>
-                    </li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li class="nav-item active">
+                            <a href="/Wydawnictwo/GetAll" class="nav-link">Wydawnictwa</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a href="/Book/GetAll" class="nav-link">Książki</a>
                     </li>
-                    @if (User.IsInRole("admin"))
-                    {
-                        <li class="nav-item"><a class="nav-link" href="/Admin/Display">Strona Administratora</a></li>
-                    }
                     @if (!string.IsNullOrEmpty(User.Identity.Name))
                     {
                         <li class="nav-item"><a class="nav-link" href="/UserAuthentication/ChangePassword">Zmień hasło</a></li>

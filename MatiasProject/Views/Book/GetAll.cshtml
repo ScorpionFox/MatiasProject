@@ -1,9 +1,14 @@
 ﻿@model IEnumerable<MatiasProject.Models.Domain.Book>
 @{
+    string username = User.Identity.Name;
 }
 
 <div class="container pt-3">
-    <div class="row">
+    <div>
+        Witaj, jesteś zalogowany jako @username
+        <br /><br />
+    </div>
+    <div class="row">     
         <div class="col-md-12">
             <a class="btn btn-dark" href="/Book/Add">+ Dodaj kolejną książkę</a>
         </div>
@@ -21,7 +26,10 @@
                         <th>Liczba stron</th>
                         <th>Autor</th>
                         <th>Wydawnictwo</th>
-                        <th>Akcja</th>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <th>Akcja</th>
+                        }
                     </tr>
                 </thead>
                 <tbody>
@@ -34,10 +42,13 @@
                             <td>@item.TotalPages</td>
                             <td>@item.NameAutor</td>
                             <td>@item.NameWydawnictwo</td>
-                            <td>
-                                <a href="/Book/Update?id=@item.Id" class="btn btn-success"><i class="bi bi-pen"></i> Edytuj</a>
-                                <a href="/Book/Delete?id=@item.Id" class="btn btn-danger" onclick="return window.confirm('Czy chcesz usunąć ten rekord?')"><i class="bi bi-trash"></i> Usuń</a>
-                            </td>
+                            @if (User.IsInRole("admin"))
+                            {
+                                <td>
+                                    <a href="/Book/Update?id=@item.Id" class="btn btn-success"><i class="bi bi-pen"></i> Edytuj</a>
+                                    <a href="/Book/Delete?id=@item.Id" class="btn btn-danger" onclick="return window.confirm('Czy chcesz usunąć ten rekord?')"><i class="bi bi-trash"></i> Usuń</a>
+                                </td>
+                            }
                         </tr>
                     }
                 </tbody>

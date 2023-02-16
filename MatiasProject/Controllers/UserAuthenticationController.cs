@@ -40,7 +40,7 @@ namespace MatiasProject.Controllers
             var result = await service.LoginAsync(model);
             if (result.StatusCode == 1)
             {
-                return RedirectToAction("Display", "Dashboard");
+                return RedirectToAction("GetAll", "Book");
             }
             else
             {
