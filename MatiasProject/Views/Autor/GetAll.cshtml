@@ -5,7 +5,7 @@
 <div class="container pt-5">
     <div class="row">
         <div class="col-md-6">
-            <a class="btn btn-dark"href="/Autor/Add">+ Dodaj kolejnego autora</a>
+            <a class="btn btn-dark" href="/Autor/Add">+ Dodaj kolejnego autora</a>
         </div>
     </div>
     <div class="row">
@@ -16,7 +16,10 @@
                 <thead>
                     <tr>
                         <th>Autor</th>
-                        <th>Akcja</th>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <th>Akcja</th>
+                        }
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +27,7 @@
                     {
                         <tr>
                             <td>@item.NameAutor</td>
-                             @if (User.IsInRole("admin"))
+                            @if (User.IsInRole("admin"))
                             {
                                 <td>
                                     <a href="/Autor/Update?id=@item.Id" class="btn btn-success"><i class="bi bi-pen"></i> Edytuj</a>

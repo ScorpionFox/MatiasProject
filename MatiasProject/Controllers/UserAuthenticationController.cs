@@ -13,6 +13,12 @@ namespace MatiasProject.Controllers
             this.service = service;
         }
 
+
+        public IActionResult Registration()
+        { 
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Registration(RegistrationModel model)
         {

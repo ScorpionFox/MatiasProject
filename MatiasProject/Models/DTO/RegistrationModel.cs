@@ -14,7 +14,7 @@ namespace MatiasProject.Models.DTO
         [Required]
         public string UserName { get; set; }
         [Required]
-        [RegularExpression("^(?=.*?[A-Z](?=.*?[a-z])(?=.*?[0-9](?=.*[#$^+=!*()@%&]).{6,}$", ErrorMessage ="Minimum 6 znaków, musi zawierać 1 cyfre, 1 dużą litere, 1 małą litere, 1 znak specjalny")]
+        [RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*[#$^+=!*()@%&]).{6,}$", ErrorMessage ="Minimum 6 znaków, musi zawierać 1 cyfre, 1 dużą litere, 1 małą litere, 1 znak specjalny")]
         public string Password { get; set; }
         [Required]
         [Compare("Password")]

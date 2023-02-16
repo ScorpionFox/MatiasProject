@@ -16,7 +16,10 @@
                 <thead>
                     <tr>
                         <th>Nazwa</th>
-                        <th>Akcja</th>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <th>Akcja</th>
+                        }
                     </tr>
                 </thead>
                 <tbody>
