@@ -112,5 +112,31 @@ namespace MatiasProject.Repositories.Implementation
             status.Message = "Użytkownik został zarejestrowany pomyślnie";
             return status;
         }
+
+        public async Task<Status> ChangePasswordAsync(ChangePasswordModel model, string username)
+        {
+            var status = new Status();
+
+            var user = await userManager.FindByNameAsync(username);
+            if (user == null)
+            {
+                status.Message = "Użytkownik nie istnieje";
+                status.StatusCode = 0;
+                return status;
+            }
+            var result = await userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+            if (result.Succeeded)
+            {
+                status.Message = "Hasło zostało zmienione";
+                status.StatusCode = 1;
+            }
+            else
+            {
+                status.Message = "Wystąpił błąd";
+                status.StatusCode = 0;
+            }
+            return status;
+
+        }
     }
 }

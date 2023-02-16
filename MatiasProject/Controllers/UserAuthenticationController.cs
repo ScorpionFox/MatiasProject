@@ -76,5 +76,23 @@ namespace MatiasProject.Controllers
         //    var result = await service.RegistrationAsync(model);
         //    return Ok(result);
         //}
+        [Authorize]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult>ChangePassword(ChangePasswordModel model)
+        {
+            if (!ModelState.IsValid) 
+            {
+                return View(model);
+            }
+            var result = await service.ChangePasswordAsync(model, User.Identity.Name);
+            TempData["msg"] = result.Message;
+            return RedirectToAction(nameof(ChangePassword));
+        }
     }
 }

@@ -4,6 +4,7 @@ using MatiasProject.Repositories.Abstract;
 using MatiasProject.Repositories.Implementation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
