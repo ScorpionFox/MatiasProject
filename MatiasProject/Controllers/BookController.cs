@@ -1,10 +1,12 @@
 ﻿using MatiasProject.Models.Domain;
 using MatiasProject.Repositories.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MatiasProject.Controllers
 {
+    [Authorize]
     public class BookController : Controller
     {
         private readonly IBookService bookService;

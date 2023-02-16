@@ -1,9 +1,11 @@
 ﻿using MatiasProject.Models.Domain;
 using MatiasProject.Repositories.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MatiasProject.Controllers
 {
+    [Authorize]
     public class GatunekController : Controller
     {
         private readonly IGatunekService service;

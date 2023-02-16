@@ -32,11 +32,11 @@
                     </li>
                     @if (User.IsInRole("admin"))
                     {
-                        <li class="nav-item"><a class="nav-link" href="/Admin/Display">Admin Page</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Admin/Display">Strona Administratora</a></li>
                     }
                     @if (!string.IsNullOrEmpty(User.Identity.Name))
                     {
-                        <li class="nav-item"><a class="nav-link" href="/UserAuthentication/ChangePassword">ChangePassword</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/UserAuthentication/ChangePassword">Zmień hasło</a></li>
                         <li class="nav-item"><a class="nav-link" href="/UserAuthentication/Logout">Wyloguj</a></li>
                     }
                 </ul>

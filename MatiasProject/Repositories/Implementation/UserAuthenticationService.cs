@@ -26,14 +26,14 @@ namespace MatiasProject.Repositories.Implementation
             if (user == null)
             {
                 status.StatusCode = 0;
-                status.Message = "Invalid username";
+                status.Message = "Niepoprawna nazwa użytkownika";
                 return status;
             }
 
             if (!await userManager.CheckPasswordAsync(user, model.Password))
             {
                 status.StatusCode = 0;
-                status.Message = "Invalid Password";
+                status.Message = "Niepoprawne hasło";
                 return status;
             }
 
@@ -51,17 +51,17 @@ namespace MatiasProject.Repositories.Implementation
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
                 status.StatusCode = 1;
-                status.Message = "Logged in successfully";
+                status.Message = "Zalogowano pomyślnie";
             }
             else if (signInResult.IsLockedOut)
             {
                 status.StatusCode = 0;
-                status.Message = "User is locked out";
+                status.Message = "Użytkownik jest zablokowany";
             }
             else
             {
                 status.StatusCode = 0;
-                status.Message = "Error on logging in";
+                status.Message = "Błąd przy próbie logowania";
             }
 
             return status;
