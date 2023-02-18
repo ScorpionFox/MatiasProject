@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MatiasProject.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class WydawnictwoController : Controller
     {
         private readonly IWydawnictwoService service;
