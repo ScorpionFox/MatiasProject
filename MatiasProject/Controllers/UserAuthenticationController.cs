@@ -67,7 +67,7 @@ namespace MatiasProject.Controllers
         //{
         //    var model = new RegistrationModel
         //    {
-        //        UserName = "admin1",
+        //        UserName = "admin",
         //        Name = "Matias",
         //        Email = "matias@gmail.com",
         //        Password = "Admin@12345#",
